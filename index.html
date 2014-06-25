@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Word Cloud</title>
+    <link rel="stylesheet" type="text/css" href="css/jqcloud.css" />
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/jqcloud.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            url: "./WordsCount.php"
+        }).done(function(data) {
+            var jqcloud_data = [];
+            for (var key in JSON.parse(data)) {
+                jqcloud_data.push({
+                    text: key,
+                    weight: JSON.parse(data)[key]
+                });
+            }
+            $("#twitter_cloud").jQCloud(jqcloud_data);
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div id="twitter_cloud" style="width: 550px; height: 350px;"></div>
+</body>
+
+</html>
