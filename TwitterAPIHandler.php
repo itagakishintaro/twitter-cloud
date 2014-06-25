@@ -14,7 +14,7 @@ class TwitterAPIHandler{
 
     public function getJsonTweets(){
         return $this->twitterObject->OAuthRequest('https://api.twitter.com/1.1/search/tweets.json','GET',
-            array('lang' => 'ja',　
+            array('lang' => 'ja',
                 'q' => 'ラピュタ+OR+バルス')
         );
     }
